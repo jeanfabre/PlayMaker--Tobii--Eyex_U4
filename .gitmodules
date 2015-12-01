@@ -1,0 +1,3 @@
+[submodule "Assets/PlayMakerUtils"]
+	path = Assets/PlayMakerUtils
+	url = https://jeanfabre@github.com/jeanfabre/PlayMaker--Utils.git
