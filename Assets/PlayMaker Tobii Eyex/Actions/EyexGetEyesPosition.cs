@@ -1,4 +1,4 @@
-﻿// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
+﻿// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
 
 using UnityEngine;
 
@@ -9,14 +9,25 @@ namespace HutongGames.PlayMaker.Actions
 	public class EyexGetEyesPosition : FsmStateAction
 	{
 
+		[UIHint(UIHint.Variable)]
 		public FsmBool isValid;
 
+		[UIHint(UIHint.Variable)]
 		public FsmBool leftEyeIsValid;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 leftEyePosition;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 leftEyePositionNormalized;
 
+		[UIHint(UIHint.Variable)]
 		public FsmBool rightEyeIsValid;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 rightEyePosition;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 righEyePositionNormalized;
 
 		public FsmEvent errorEvent;
@@ -50,13 +61,19 @@ namespace HutongGames.PlayMaker.Actions
 			}
 		}
 
+		public override void OnUpdate()
+		{
+			GetEyesPosition();
+		}
+
+
 		EyeXEyePosition _pos;
 
 		void GetEyesPosition()
 		{
 			if (PlayMakerEyexEyePositionDataProxy.Instance == null)
 			{
-				LogError("Missing PlayMakerEyexEyePositionDataProxy!");
+				LogError("Missing 'PlayMaker Tobii Eyex' prefab instance in Scene!");
 				Fsm.Event(errorEvent);
 				return;
 			}
