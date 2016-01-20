@@ -1,4 +1,4 @@
-﻿// (c) Copyright HutongGames, LLC 2010-2013. All rights reserved.
+﻿// (c) Copyright HutongGames, LLC 2010-2015. All rights reserved.
 
 using UnityEngine;
 
@@ -9,14 +9,25 @@ namespace HutongGames.PlayMaker.Actions
 	public class EyexGetEyesPosition : FsmStateAction
 	{
 
+		[UIHint(UIHint.Variable)]
 		public FsmBool isValid;
 
+		[UIHint(UIHint.Variable)]
 		public FsmBool leftEyeIsValid;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 leftEyePosition;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 leftEyePositionNormalized;
 
+		[UIHint(UIHint.Variable)]
 		public FsmBool rightEyeIsValid;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 rightEyePosition;
+
+		[UIHint(UIHint.Variable)]
 		public FsmVector3 righEyePositionNormalized;
 
 		public FsmEvent errorEvent;
@@ -50,13 +61,19 @@ namespace HutongGames.PlayMaker.Actions
 			}
 		}
 
+		public override void OnUpdate()
+		{
+			GetEyesPosition();
+		}
+
+
 		EyeXEyePosition _pos;
 
 		void GetEyesPosition()
 		{
 			if (PlayMakerEyexEyePositionDataProxy.Instance == null)
 			{
-				LogError("Missing PlayMakerEyexEyePositionDataProxy!");
+				LogError("Missing 'PlayMaker Tobii Eyex' prefab instance in Scene!");
 				Fsm.Event(errorEvent);
 				return;
 			}
@@ -73,12 +90,12 @@ namespace HutongGames.PlayMaker.Actions
 				leftEyeIsValid.Value = _pos.LeftEye.IsValid;
 			}
 
-			if (!leftEyePosition.IsNone)
+			if (!leftEyePosition.IsNone && _pos.LeftEye.IsValid)
 			{
 				leftEyePosition.Value = new Vector3(_pos.LeftEye.X,_pos.LeftEye.Y,_pos.LeftEye.Z);
 			}
 
-			if (!leftEyePositionNormalized.IsNone)
+			if (!leftEyePositionNormalized.IsNone && _pos.LeftEye.IsValid)
 			{
 				leftEyePositionNormalized.Value = new Vector3(_pos.LeftEyeNormalized.X,_pos.LeftEyeNormalized.Y,_pos.LeftEyeNormalized.Z);
 			}
@@ -88,12 +105,12 @@ namespace HutongGames.PlayMaker.Actions
 				rightEyeIsValid.Value = _pos.RightEye.IsValid;
 			}
 
-			if (!rightEyePosition.IsNone)
+			if (!rightEyePosition.IsNone && _pos.RightEye.IsValid)
 			{
 				rightEyePosition.Value = new Vector3(_pos.RightEye.X,_pos.RightEye.Y,_pos.RightEye.Z);
 			}
 
-			if (!righEyePositionNormalized.IsNone)
+			if (!righEyePositionNormalized.IsNone && _pos.RightEye.IsValid)
 			{
 				righEyePositionNormalized.Value = new Vector3(_pos.RightEyeNormalized.X,_pos.RightEyeNormalized.Y,_pos.RightEyeNormalized.Z);
 			}
