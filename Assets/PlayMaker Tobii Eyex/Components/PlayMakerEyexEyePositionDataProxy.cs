@@ -8,7 +8,7 @@ using Tobii.EyeX.Framework;
 /// <summary>
 /// PlayMaker Proxy Component for EyePositionDataComponent.
 /// </summary>
-//[AddComponentMenu("PlayMaker/Addons/Tobii EyeX/Eye Position Data Proxy")]
+[AddComponentMenu("PlayMaker/Addons/Tobii EyeX/Eye Position Data Proxy")]
 public class PlayMakerEyexEyePositionDataProxy : MonoBehaviour {
 
 	public FixationDataMode fixationDataMode;
