@@ -82,37 +82,50 @@ namespace HutongGames.PlayMaker.Actions
 
 			if (!isValid.IsNone)
 			{
-				isValid.Value = _pos.IsValid;
+				isValid.Value = _pos!=null?_pos.IsValid:false;
 			}
 
-			if (!leftEyeIsValid.IsNone)
+			if ( _pos!=null && _pos.IsValid)
 			{
-				leftEyeIsValid.Value = _pos.LeftEye.IsValid;
-			}
+				if (!leftEyeIsValid.IsNone)
+				{
+					leftEyeIsValid.Value = _pos.LeftEye.IsValid;
+				}
 
-			if (!leftEyePosition.IsNone && _pos.LeftEye.IsValid)
-			{
-				leftEyePosition.Value = new Vector3(_pos.LeftEye.X,_pos.LeftEye.Y,_pos.LeftEye.Z);
-			}
+				if (!leftEyePosition.IsNone && _pos.LeftEye.IsValid)
+				{
+					leftEyePosition.Value = new Vector3(_pos.LeftEye.X,_pos.LeftEye.Y,_pos.LeftEye.Z);
+				}
 
-			if (!leftEyePositionNormalized.IsNone && _pos.LeftEye.IsValid)
-			{
-				leftEyePositionNormalized.Value = new Vector3(_pos.LeftEyeNormalized.X,_pos.LeftEyeNormalized.Y,_pos.LeftEyeNormalized.Z);
-			}
+				if (!leftEyePositionNormalized.IsNone && _pos.LeftEye.IsValid)
+				{
+					leftEyePositionNormalized.Value = new Vector3(_pos.LeftEyeNormalized.X,_pos.LeftEyeNormalized.Y,_pos.LeftEyeNormalized.Z);
+				}
 
-			if (!rightEyeIsValid.IsNone)
-			{
-				rightEyeIsValid.Value = _pos.RightEye.IsValid;
-			}
+				if (!rightEyeIsValid.IsNone)
+				{
+					rightEyeIsValid.Value = _pos.RightEye.IsValid;
+				}
 
-			if (!rightEyePosition.IsNone && _pos.RightEye.IsValid)
-			{
-				rightEyePosition.Value = new Vector3(_pos.RightEye.X,_pos.RightEye.Y,_pos.RightEye.Z);
-			}
+				if (!rightEyePosition.IsNone && _pos.RightEye.IsValid)
+				{
+					rightEyePosition.Value = new Vector3(_pos.RightEye.X,_pos.RightEye.Y,_pos.RightEye.Z);
+				}
 
-			if (!righEyePositionNormalized.IsNone && _pos.RightEye.IsValid)
-			{
-				righEyePositionNormalized.Value = new Vector3(_pos.RightEyeNormalized.X,_pos.RightEyeNormalized.Y,_pos.RightEyeNormalized.Z);
+				if (!righEyePositionNormalized.IsNone && _pos.RightEye.IsValid)
+				{
+					righEyePositionNormalized.Value = new Vector3(_pos.RightEyeNormalized.X,_pos.RightEyeNormalized.Y,_pos.RightEyeNormalized.Z);
+				}
+			}else{
+				if (!leftEyeIsValid.IsNone)
+				{
+					leftEyeIsValid.Value = false;
+				}
+
+				if (!rightEyeIsValid.IsNone)
+				{
+					rightEyeIsValid.Value = false;
+				}
 			}
 		}
 

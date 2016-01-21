@@ -95,9 +95,9 @@ namespace HutongGames.PlayMaker.Actions
 
 				if (_hasGaze)
 				{
-					Event(onGazeStartedEvent);
+					Fsm.Event(onGazeStartedEvent);
 				}else{
-					Event(onGazeEndedEvent);
+					Fsm.Event(onGazeEndedEvent);
 				}
 			}
 		}
