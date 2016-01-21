@@ -99,7 +99,7 @@ namespace HutongGames.PlayMaker.Actions
 
 				if (!leftEyePositionNormalized.IsNone && _pos.LeftEye.IsValid)
 				{
-					leftEyePositionNormalized.Value = new Vector3(_pos.LeftEyeNormalized.X,_pos.LeftEyeNormalized.Y,_pos.LeftEyeNormalized.Z);
+					leftEyePositionNormalized.Value = new Vector3(1f-_pos.LeftEyeNormalized.X,1f-_pos.LeftEyeNormalized.Y,1f-_pos.LeftEyeNormalized.Z);
 				}
 
 				if (!rightEyeIsValid.IsNone)
@@ -114,7 +114,7 @@ namespace HutongGames.PlayMaker.Actions
 
 				if (!righEyePositionNormalized.IsNone && _pos.RightEye.IsValid)
 				{
-					righEyePositionNormalized.Value = new Vector3(_pos.RightEyeNormalized.X,_pos.RightEyeNormalized.Y,_pos.RightEyeNormalized.Z);
+					righEyePositionNormalized.Value = new Vector3(1f-_pos.RightEyeNormalized.X,1f-_pos.RightEyeNormalized.Y,1f-_pos.RightEyeNormalized.Z);
 				}
 			}else{
 				if (!leftEyeIsValid.IsNone)
